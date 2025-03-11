@@ -9,37 +9,54 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
 
+/**
+ * @OA\Tag(
+ *     name="Auth",
+ *     description="API Endpoints for User Authentication"
+ * )
+ */
 class AuthController extends Controller
 {
     /**
      * Register a new user.
      *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/register",
+     *     tags={"Auth"},
+     *     summary="Register a new user",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name", "email", "password", "password_confirmation"},
+     *             @OA\Property(property="name", type="string", example="John Doe"),
+     *             @OA\Property(property="email", type="string", example="johndoe@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="password123"),
+     *             @OA\Property(property="password_confirmation", type="string", format="password", example="password123")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="User registered successfully"),
+     *     @OA\Response(response=422, description="Validation error")
+     * )
      */
     public function register(Request $request)
     {
-        // Validate the request
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Create the user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        // Assign the 'user' role by default
         $userRole = Role::where('name', 'user')->first();
         if ($userRole) {
             $user->assignRole($userRole);
         }
 
-        // Return a success response
         return response()->json([
             'message' => 'User registered successfully',
             'user' => $user,
@@ -49,39 +66,46 @@ class AuthController extends Controller
     /**
      * Log in a user and issue an access token.
      *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     * @throws ValidationException
+     * @OA\Post(
+     *     path="/api/login",
+     *     tags={"Auth"},
+     *     summary="User login",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email", "password"},
+     *             @OA\Property(property="email", type="string", example="johndoe@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="password123")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Logged in successfully"),
+     *     @OA\Response(response=401, description="Invalid credentials")
+     * )
      */
     public function login(Request $request)
     {
-        // Validate the request
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
-        // Find the user by email
         $user = User::where('email', $request->email)->first();
 
-        // Check if the user exists and the password is correct
         if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
 
-        // Create a token for the user
         $token = $user->createToken('auth-token')->accessToken;
 
-        // Return the token and user details
         return response()->json([
             'message' => 'Logged in successfully',
             'token' => $token,
             'user' => $user,
         ], 200);
     }
-
+    
     /**
      * Log out the user and revoke the token.
      *

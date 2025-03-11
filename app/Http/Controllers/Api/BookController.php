@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use App\Services\BookCacheService;
 
+/**
+ * @OA\Info(
+ *      title="Book API",
+ *      version="1.0.0",
+ *      description="API documentation for managing books"
+ * )
+ * 
+ * @OA\Tag(
+ *     name="Books",
+ *     description="API Endpoints for Books"
+ * )
+ */
 class BookController extends Controller
 {
     protected $bookCacheService;
@@ -21,15 +33,31 @@ class BookController extends Controller
         $this->bookCacheService = $bookCacheService;
     }
 
+    /**
+     * Get Paginated List of Books
+     *
+     * @OA\Get(
+     *     path="/api/books",
+     *     tags={"Books"},
+     *     summary="Retrieve paginated list of books",
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Page number for pagination",
+     *         required=false,
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(response=200, description="Books retrieved successfully"),
+     *     @OA\Response(response=400, description="Bad request"),
+     * )
+     */
     public function index(Request $request)
     {
-        $page = $request->query('page', 1); // Get the current page number
-
-        // Cache the paginated results for the current page
+        $page = $request->query('page', 1);
         $books = Cache::remember('books_page_' . $page, 60, function () {
-            return Book::paginate(10); // Paginate the books
+            return Book::paginate(10);
         });
-    
+
         return response()->json([
             'message' => 'Books retrieved successfully',
             'data' => $books,
@@ -37,14 +65,27 @@ class BookController extends Controller
     }
 
     /**
-     * Store a newly created book in storage.
+     * Store a New Book
      *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/books",
+     *     tags={"Books"},
+     *     summary="Create a new book",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"title", "author"},
+     *             @OA\Property(property="title", type="string", example="The Great Gatsby"),
+     *             @OA\Property(property="author", type="string", example="F. Scott Fitzgerald"),
+     *             @OA\Property(property="description", type="string", example="A novel set in the 1920s")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Book created successfully"),
+     *     @OA\Response(response=422, description="Validation error"),
+     * )
      */
     public function store(Request $request)
     {
-        // Validate the request
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
@@ -58,10 +99,7 @@ class BookController extends Controller
             ], 422);
         }
 
-        // Create the book
         $book = Book::create($request->only(['title', 'author', 'description']));
-
-        // Clear cache for all pages using the BookCacheService
         $this->bookCacheService->clearBooksCache();
 
         return response()->json([
@@ -71,19 +109,29 @@ class BookController extends Controller
     }
 
     /**
-     * Display the specified book.
+     * Get Details of a Specific Book
      *
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Get(
+     *     path="/api/books/{id}",
+     *     tags={"Books"},
+     *     summary="Retrieve a specific book",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Book ID",
+     *         required=true,
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(response=200, description="Book retrieved successfully"),
+     *     @OA\Response(response=404, description="Book not found"),
+     * )
      */
     public function show($id)
     {
         $book = Book::find($id);
 
         if (!$book) {
-            return response()->json([
-                'message' => 'Book not found',
-            ], 404);
+            return response()->json(['message' => 'Book not found'], 404);
         }
 
         return response()->json([
@@ -93,24 +141,40 @@ class BookController extends Controller
     }
 
     /**
-     * Update the specified book in storage.
+     * Update a Book
      *
-     * @param Request $request
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Put(
+     *     path="/api/books/{id}",
+     *     tags={"Books"},
+     *     summary="Update a book's details",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Book ID",
+     *         required=true,
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="title", type="string", example="Updated Title"),
+     *             @OA\Property(property="author", type="string", example="Updated Author"),
+     *             @OA\Property(property="description", type="string", example="Updated description")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Book updated successfully"),
+     *     @OA\Response(response=404, description="Book not found"),
+     *     @OA\Response(response=422, description="Validation error"),
+     * )
      */
     public function update(Request $request, $id)
     {
-        // Find the book
         $book = Book::find($id);
 
         if (!$book) {
-            return response()->json([
-                'message' => 'Book not found',
-            ], 404);
+            return response()->json(['message' => 'Book not found'], 404);
         }
 
-        // Validate the request
         $validator = Validator::make($request->all(), [
             'title' => 'sometimes|string|max:255',
             'author' => 'sometimes|string|max:255',
@@ -124,10 +188,7 @@ class BookController extends Controller
             ], 422);
         }
 
-        // Update the book
         $book->update($request->only(['title', 'author', 'description']));
-        
-        // Clear cache for all pages using the BookCacheService
         $this->bookCacheService->clearBooksCache();
 
         return response()->json([
@@ -137,30 +198,34 @@ class BookController extends Controller
     }
 
     /**
-     * Remove the specified book from storage.
+     * Delete a Book
      *
-     * @param int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Delete(
+     *     path="/api/books/{id}",
+     *     tags={"Books"},
+     *     summary="Delete a book",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Book ID",
+     *         required=true,
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(response=200, description="Book deleted successfully"),
+     *     @OA\Response(response=404, description="Book not found"),
+     * )
      */
     public function destroy($id)
     {
-        // Find the book
         $book = Book::find($id);
 
         if (!$book) {
-            return response()->json([
-                'message' => 'Book not found',
-            ], 404);
+            return response()->json(['message' => 'Book not found'], 404);
         }
 
-        // Delete the book
         $book->delete();
-
-        // Clear cache for all pages using the BookCacheService
         $this->bookCacheService->clearBooksCache();
 
-        return response()->json([
-            'message' => 'Book deleted successfully',
-        ], 200);
+        return response()->json(['message' => 'Book deleted successfully'], 200);
     }
 }
