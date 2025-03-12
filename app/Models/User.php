@@ -42,4 +42,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            Book::where('borrower_id', $user->id)->update([
+                'borrower_id' => null,
+                'status' => 'available'
+            ]);
+        });
+    }
 }
