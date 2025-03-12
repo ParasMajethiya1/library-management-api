@@ -142,37 +142,66 @@ This is a simple Library Management API built using Laravel 10. The API allows u
 
 ## Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/library-management-laravel.git
-   ```
+# Library Management API - Installation Guide
 
-2. Navigate to the project directory:
-   ```bash
-   cd library-management-laravel
-   ```
+## Prerequisites
+Before proceeding with the installation, ensure that you have the following requirements installed on your system:
+- PHP (>=8.0)
+- Composer
+- MySQL
+- Laravel
+- Git
 
-3. Install dependencies:
-   ```bash
-   composer install
-   ```
+## Installation Steps
 
-4. Create a `.env` file and configure your database settings:
-   ```bash
-   cp .env.example .env
-   ```
+### 1. Clone the Repository
+Run the following command to clone the project:
+```bash
+git clone https://github.com/ParasMajethiya1/library-management-api.git
+```
 
-5. Generate an application key:
-   ```bash
-   php artisan key:generate
-   ```
+### 2. Set Up Environment Configuration
+Copy the `.env.testing` file to `.env` and update the database configuration:
+```bash
+cp .env.testing .env
+```
+Modify the `.env` file with your database credentials:
+```ini
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=library_management
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-6. Run migrations:
-   ```bash
-   php artisan migrate
-   ```
+### 3. Run Database Migrations and Seed Data
+Run the following command to create tables and seed initial data:
+```bash
+php artisan migrate:fresh --seed
+```
 
-7. Start the development server:
-   ```bash
-   php artisan serve
-   ```
+### 4. Install Laravel Passport
+To enable API authentication, install Laravel Passport:
+```bash
+php artisan passport:install
+```
+
+### 5. Run Tests in Testing Environment
+Run the migration and install Passport for the testing environment:
+```bash
+php artisan migrate:fresh --env=testing --seed
+php artisan passport:install --env=testing
+```
+
+### 6. Run Automated Tests
+To ensure everything is set up correctly, execute the test suite:
+```bash
+php artisan test
+```
+
+## Notes
+- Ensure your MySQL service is running before running the migrations.
+- If you encounter any issues, check the Laravel logs in `storage/logs/`.
+- Use `php artisan serve` to start the development server.
+
