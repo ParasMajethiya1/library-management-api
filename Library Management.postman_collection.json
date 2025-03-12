@@ -1,0 +1,452 @@
+{
+	"info": {
+		"_postman_id": "773204e5-647d-4474-ba56-f1b5d0d962c6",
+		"name": "Library Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28680353"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/api/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Paras",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "parasmajethiya2021@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "DRftgyhu12#",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "DRftgyhu12#",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "parasmajethiya1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password123#",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZmMzA4MWU0ZTVjOTYxNjUwZWRkNTQ1YWNhMzFjMTJkMDZmM2UyODBkMjZkNWY3ZjY0ZDJhNTA5M2EyYTRlMjE3M2I0YzE0YWY0NTA0NWUiLCJpYXQiOjE3NDE3ODk5NzIuMTk0MDQ0LCJuYmYiOjE3NDE3ODk5NzIuMTk0MDUxLCJleHAiOjE3NzMzMjU5NzIuMDA4MzkxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.W0w5GDPCzy6tigerIuD4cAQmghhBeGMiK4pSWkl3rsfxIYi6b6H7yI6Ou6HnzYeQHb7GRJiDZqm85ZgM3lRBVZ-sVkTnFkTVk5YbOtQFDX0cgMvPIruZ_C1EN4205rvbYDLb2M9qDnrSjBUiA0c8cZ_ag5_1uYxMBOnHKoakxzJ6yjeEny1S7JB7kdcMcsDjxjBEUFDsMkAY9A_oKEmW96mPh66rJvRdYuy-hju-pwCF3jX5MxHWGU-Af_ukc-anxn8s2-8dRJEcxjuL-bQoXmoeLIrWaplUpz7mMlvtU3_vIOfAAHXFgoZbt5Mh5PlK2c2gal1QwxT0zzqGnJ2QQ4WWsWLfWg4k-6aOFKBj7nbaeuN6XL4mZBdCnnQYFTARJ0mVQDHkRCO1jqyr4MxjzMyutZ4NJBeGmAT7v8HFDU-Wlkm-m0iFRZzuC4ddhArQl1tkIqdcnHmhP5gBneCAPXnmayYF3FeL1k1lW6Es1dZH8RBRDq7pnQ70nRCpCyCMw5Ae9aadyFXBFi7zSqz_iD9OtG5WoqOI53wqt8FEGqqGcFukrUzYY_9dEOGkhp7YlRFL4lk1A2ogmyEXj2NeQOu3LwJd-GtE_0KKNOT-q1kEVOwN7hwUnpCuwH1vxeSRmrtxtltUNh20FdDk7NUzHyxFBN2LgCumJEe9ixcgZLw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiOTc5NjYyY2M4YjM3OGM2OTI1MWQ0OWEzZGY0Y2VmN2EyYzViYTRmOGE2NDFiOWRlM2I4YTAzZjE4OWJhYzQ3ZDcxMWQxOWQwZTIwNWMiLCJpYXQiOjE3NDE3OTAyMTEuODI5NDE2LCJuYmYiOjE3NDE3OTAyMTEuODI5NDIxLCJleHAiOjE3NzMzMjYyMTEuNjQwNjI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JykYvUoc5hUTIWgHPacYzwaDXm79F0nhtrzla1k1cAmB1HONmBlUfl3s6Zz-SnKxE-d9kk1MqkQ3TrQjuamDy95GEuQ2B3hcq-T2hcdtDIL164ZGnFTTlFsXMrB_ti13TsJgb9nhrlE43-28qNbJENYqX1Y9eeCTOUzGG1b3l80ZWXM0k5RYMxkACz8Yjo-aCASr0I2FJl1oMN6cpvSbRDJYogKU5U1DOP1XwVrf1BQFhcvGrsF6gTJ0gxHcwS6WXLaw7HxtkDqYS3VEXFl2EC7HaBkNF0SP9GUfd-HC2XK98yLITKxnaHFD3BJQsazvJ7w9lCVLl2MTd_aeXCthrzXJboxapC2ndM-rF7VSKvYhRDGyEGNxhXLSPwSvqi4VExs-bjSQbtoZjz9dlZtrHJrBIGv5WistxhwkQ3nQNIYHPkinDqkKyNTVvEAP_bw7Qgrf1JGmW5JqFzPon0VZ3OrEQeFLnUwkuM1pbJTTPGomy3lY_TYS3W1K3NSx15lxhAv3GJ1K_1zcR3QFL3m6SvqmDBe8jOY-h6bh4wOSucfTYVDu7lkwIgjLgbJUHW4_-GUrUhhIjHVEuEF5EevLIixbXZMMrd2uEWpg1zXTz08s9Qt8GZMNt9F5Wu5eYMveHVw5kVdopkL76wA3P1oCOOIN3Zj2EEZz7GV4evUp7Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiOTc5NjYyY2M4YjM3OGM2OTI1MWQ0OWEzZGY0Y2VmN2EyYzViYTRmOGE2NDFiOWRlM2I4YTAzZjE4OWJhYzQ3ZDcxMWQxOWQwZTIwNWMiLCJpYXQiOjE3NDE3OTAyMTEuODI5NDE2LCJuYmYiOjE3NDE3OTAyMTEuODI5NDIxLCJleHAiOjE3NzMzMjYyMTEuNjQwNjI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JykYvUoc5hUTIWgHPacYzwaDXm79F0nhtrzla1k1cAmB1HONmBlUfl3s6Zz-SnKxE-d9kk1MqkQ3TrQjuamDy95GEuQ2B3hcq-T2hcdtDIL164ZGnFTTlFsXMrB_ti13TsJgb9nhrlE43-28qNbJENYqX1Y9eeCTOUzGG1b3l80ZWXM0k5RYMxkACz8Yjo-aCASr0I2FJl1oMN6cpvSbRDJYogKU5U1DOP1XwVrf1BQFhcvGrsF6gTJ0gxHcwS6WXLaw7HxtkDqYS3VEXFl2EC7HaBkNF0SP9GUfd-HC2XK98yLITKxnaHFD3BJQsazvJ7w9lCVLl2MTd_aeXCthrzXJboxapC2ndM-rF7VSKvYhRDGyEGNxhXLSPwSvqi4VExs-bjSQbtoZjz9dlZtrHJrBIGv5WistxhwkQ3nQNIYHPkinDqkKyNTVvEAP_bw7Qgrf1JGmW5JqFzPon0VZ3OrEQeFLnUwkuM1pbJTTPGomy3lY_TYS3W1K3NSx15lxhAv3GJ1K_1zcR3QFL3m6SvqmDBe8jOY-h6bh4wOSucfTYVDu7lkwIgjLgbJUHW4_-GUrUhhIjHVEuEF5EevLIixbXZMMrd2uEWpg1zXTz08s9Qt8GZMNt9F5Wu5eYMveHVw5kVdopkL76wA3P1oCOOIN3Zj2EEZz7GV4evUp7Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Paras Book",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Paras",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "PHP",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/books/102",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiOTc5NjYyY2M4YjM3OGM2OTI1MWQ0OWEzZGY0Y2VmN2EyYzViYTRmOGE2NDFiOWRlM2I4YTAzZjE4OWJhYzQ3ZDcxMWQxOWQwZTIwNWMiLCJpYXQiOjE3NDE3OTAyMTEuODI5NDE2LCJuYmYiOjE3NDE3OTAyMTEuODI5NDIxLCJleHAiOjE3NzMzMjYyMTEuNjQwNjI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JykYvUoc5hUTIWgHPacYzwaDXm79F0nhtrzla1k1cAmB1HONmBlUfl3s6Zz-SnKxE-d9kk1MqkQ3TrQjuamDy95GEuQ2B3hcq-T2hcdtDIL164ZGnFTTlFsXMrB_ti13TsJgb9nhrlE43-28qNbJENYqX1Y9eeCTOUzGG1b3l80ZWXM0k5RYMxkACz8Yjo-aCASr0I2FJl1oMN6cpvSbRDJYogKU5U1DOP1XwVrf1BQFhcvGrsF6gTJ0gxHcwS6WXLaw7HxtkDqYS3VEXFl2EC7HaBkNF0SP9GUfd-HC2XK98yLITKxnaHFD3BJQsazvJ7w9lCVLl2MTd_aeXCthrzXJboxapC2ndM-rF7VSKvYhRDGyEGNxhXLSPwSvqi4VExs-bjSQbtoZjz9dlZtrHJrBIGv5WistxhwkQ3nQNIYHPkinDqkKyNTVvEAP_bw7Qgrf1JGmW5JqFzPon0VZ3OrEQeFLnUwkuM1pbJTTPGomy3lY_TYS3W1K3NSx15lxhAv3GJ1K_1zcR3QFL3m6SvqmDBe8jOY-h6bh4wOSucfTYVDu7lkwIgjLgbJUHW4_-GUrUhhIjHVEuEF5EevLIixbXZMMrd2uEWpg1zXTz08s9Qt8GZMNt9F5Wu5eYMveHVw5kVdopkL76wA3P1oCOOIN3Zj2EEZz7GV4evUp7Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzE1ZmM4MzAwZWIyYTVjZmZhMGFhNTJmYTY1N2VhN2ZjMWJmYmVjZmZiYjRjZjlkOWM0ZGQ1MGQ1NTllNzIwNDYyYmYwMzdlNTIzY2VlNTkiLCJpYXQiOjE3NDE3MTgzMzYuMzQxODk1LCJuYmYiOjE3NDE3MTgzMzYuMzQxODk4LCJleHAiOjE3NzMyNTQzMzYuMTU1OTQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.YbB1cx_eYB0oNBC22t80PS_NHaj7j-2Tp3_DuAuiaWRddDAArEoUJlsnKF_2hFjuHZaiuNUtSrM_aiKWprKrKrLADn3Klrh9n2uWxIMJoHyYk74DwBm4r3v32-HUs3SCTakrOlmhQxbvwNfGSzY8WwedCDzCVuuQclow3KJzukmndPg3_d8kdM2o3ihVRRotrY57Ou3ua1yQCUi_dX9e1_alYYM5mRza2eVGh_3RTJePvQmPGPCn2vx5thvqmSpEXSBXKEWlDX3Kmr_6Z2A3zDcbcXC1fEBV5Mmso1leoUrBb1R7c9_SdLAfQOEE6ZLl5fDBP4QANydKeMK7u-sFDpXAVtqHWlrmV6SCr1GWNlIGcjawvtlbWGwjKm-RsCA4JfzSCyFCV2KOhlI4-owgW02hx_XZoBbfJhP_nMmwgP7nepRnrMhV1n2ytMTazjQVb_gOoWMeMEh2kwh7kAsEVjACVnAt3tHpWGCwuWES4PzboCd54qHwyyxKnYXJy947DDIHFDUi7riGZkSL9LVYD1gKGNIQeNtcOtE354vX7mwsG4d4WdsSwrOuUv7HECxMaCE7zivnXin61u92Ki3UZQEtmxIVxzX08Yc3GLJUblpK7syER8QshZX62X-w0ZVpm5Y3UhRM-axagmrUcctaKZMaM6z71QA_ZqCO4v2_u2Q"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/102",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/books/101",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiOTc5NjYyY2M4YjM3OGM2OTI1MWQ0OWEzZGY0Y2VmN2EyYzViYTRmOGE2NDFiOWRlM2I4YTAzZjE4OWJhYzQ3ZDcxMWQxOWQwZTIwNWMiLCJpYXQiOjE3NDE3OTAyMTEuODI5NDE2LCJuYmYiOjE3NDE3OTAyMTEuODI5NDIxLCJleHAiOjE3NzMzMjYyMTEuNjQwNjI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JykYvUoc5hUTIWgHPacYzwaDXm79F0nhtrzla1k1cAmB1HONmBlUfl3s6Zz-SnKxE-d9kk1MqkQ3TrQjuamDy95GEuQ2B3hcq-T2hcdtDIL164ZGnFTTlFsXMrB_ti13TsJgb9nhrlE43-28qNbJENYqX1Y9eeCTOUzGG1b3l80ZWXM0k5RYMxkACz8Yjo-aCASr0I2FJl1oMN6cpvSbRDJYogKU5U1DOP1XwVrf1BQFhcvGrsF6gTJ0gxHcwS6WXLaw7HxtkDqYS3VEXFl2EC7HaBkNF0SP9GUfd-HC2XK98yLITKxnaHFD3BJQsazvJ7w9lCVLl2MTd_aeXCthrzXJboxapC2ndM-rF7VSKvYhRDGyEGNxhXLSPwSvqi4VExs-bjSQbtoZjz9dlZtrHJrBIGv5WistxhwkQ3nQNIYHPkinDqkKyNTVvEAP_bw7Qgrf1JGmW5JqFzPon0VZ3OrEQeFLnUwkuM1pbJTTPGomy3lY_TYS3W1K3NSx15lxhAv3GJ1K_1zcR3QFL3m6SvqmDBe8jOY-h6bh4wOSucfTYVDu7lkwIgjLgbJUHW4_-GUrUhhIjHVEuEF5EevLIixbXZMMrd2uEWpg1zXTz08s9Qt8GZMNt9F5Wu5eYMveHVw5kVdopkL76wA3P1oCOOIN3Zj2EEZz7GV4evUp7Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzE1ZmM4MzAwZWIyYTVjZmZhMGFhNTJmYTY1N2VhN2ZjMWJmYmVjZmZiYjRjZjlkOWM0ZGQ1MGQ1NTllNzIwNDYyYmYwMzdlNTIzY2VlNTkiLCJpYXQiOjE3NDE3MTgzMzYuMzQxODk1LCJuYmYiOjE3NDE3MTgzMzYuMzQxODk4LCJleHAiOjE3NzMyNTQzMzYuMTU1OTQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.YbB1cx_eYB0oNBC22t80PS_NHaj7j-2Tp3_DuAuiaWRddDAArEoUJlsnKF_2hFjuHZaiuNUtSrM_aiKWprKrKrLADn3Klrh9n2uWxIMJoHyYk74DwBm4r3v32-HUs3SCTakrOlmhQxbvwNfGSzY8WwedCDzCVuuQclow3KJzukmndPg3_d8kdM2o3ihVRRotrY57Ou3ua1yQCUi_dX9e1_alYYM5mRza2eVGh_3RTJePvQmPGPCn2vx5thvqmSpEXSBXKEWlDX3Kmr_6Z2A3zDcbcXC1fEBV5Mmso1leoUrBb1R7c9_SdLAfQOEE6ZLl5fDBP4QANydKeMK7u-sFDpXAVtqHWlrmV6SCr1GWNlIGcjawvtlbWGwjKm-RsCA4JfzSCyFCV2KOhlI4-owgW02hx_XZoBbfJhP_nMmwgP7nepRnrMhV1n2ytMTazjQVb_gOoWMeMEh2kwh7kAsEVjACVnAt3tHpWGCwuWES4PzboCd54qHwyyxKnYXJy947DDIHFDUi7riGZkSL9LVYD1gKGNIQeNtcOtE354vX7mwsG4d4WdsSwrOuUv7HECxMaCE7zivnXin61u92Ki3UZQEtmxIVxzX08Yc3GLJUblpK7syER8QshZX62X-w0ZVpm5Y3UhRM-axagmrUcctaKZMaM6z71QA_ZqCO4v2_u2Q"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/101",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/books/100",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiOTc5NjYyY2M4YjM3OGM2OTI1MWQ0OWEzZGY0Y2VmN2EyYzViYTRmOGE2NDFiOWRlM2I4YTAzZjE4OWJhYzQ3ZDcxMWQxOWQwZTIwNWMiLCJpYXQiOjE3NDE3OTAyMTEuODI5NDE2LCJuYmYiOjE3NDE3OTAyMTEuODI5NDIxLCJleHAiOjE3NzMzMjYyMTEuNjQwNjI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JykYvUoc5hUTIWgHPacYzwaDXm79F0nhtrzla1k1cAmB1HONmBlUfl3s6Zz-SnKxE-d9kk1MqkQ3TrQjuamDy95GEuQ2B3hcq-T2hcdtDIL164ZGnFTTlFsXMrB_ti13TsJgb9nhrlE43-28qNbJENYqX1Y9eeCTOUzGG1b3l80ZWXM0k5RYMxkACz8Yjo-aCASr0I2FJl1oMN6cpvSbRDJYogKU5U1DOP1XwVrf1BQFhcvGrsF6gTJ0gxHcwS6WXLaw7HxtkDqYS3VEXFl2EC7HaBkNF0SP9GUfd-HC2XK98yLITKxnaHFD3BJQsazvJ7w9lCVLl2MTd_aeXCthrzXJboxapC2ndM-rF7VSKvYhRDGyEGNxhXLSPwSvqi4VExs-bjSQbtoZjz9dlZtrHJrBIGv5WistxhwkQ3nQNIYHPkinDqkKyNTVvEAP_bw7Qgrf1JGmW5JqFzPon0VZ3OrEQeFLnUwkuM1pbJTTPGomy3lY_TYS3W1K3NSx15lxhAv3GJ1K_1zcR3QFL3m6SvqmDBe8jOY-h6bh4wOSucfTYVDu7lkwIgjLgbJUHW4_-GUrUhhIjHVEuEF5EevLIixbXZMMrd2uEWpg1zXTz08s9Qt8GZMNt9F5Wu5eYMveHVw5kVdopkL76wA3P1oCOOIN3Zj2EEZz7GV4evUp7Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzE1ZmM4MzAwZWIyYTVjZmZhMGFhNTJmYTY1N2VhN2ZjMWJmYmVjZmZiYjRjZjlkOWM0ZGQ1MGQ1NTllNzIwNDYyYmYwMzdlNTIzY2VlNTkiLCJpYXQiOjE3NDE3MTgzMzYuMzQxODk1LCJuYmYiOjE3NDE3MTgzMzYuMzQxODk4LCJleHAiOjE3NzMyNTQzMzYuMTU1OTQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.YbB1cx_eYB0oNBC22t80PS_NHaj7j-2Tp3_DuAuiaWRddDAArEoUJlsnKF_2hFjuHZaiuNUtSrM_aiKWprKrKrLADn3Klrh9n2uWxIMJoHyYk74DwBm4r3v32-HUs3SCTakrOlmhQxbvwNfGSzY8WwedCDzCVuuQclow3KJzukmndPg3_d8kdM2o3ihVRRotrY57Ou3ua1yQCUi_dX9e1_alYYM5mRza2eVGh_3RTJePvQmPGPCn2vx5thvqmSpEXSBXKEWlDX3Kmr_6Z2A3zDcbcXC1fEBV5Mmso1leoUrBb1R7c9_SdLAfQOEE6ZLl5fDBP4QANydKeMK7u-sFDpXAVtqHWlrmV6SCr1GWNlIGcjawvtlbWGwjKm-RsCA4JfzSCyFCV2KOhlI4-owgW02hx_XZoBbfJhP_nMmwgP7nepRnrMhV1n2ytMTazjQVb_gOoWMeMEh2kwh7kAsEVjACVnAt3tHpWGCwuWES4PzboCd54qHwyyxKnYXJy947DDIHFDUi7riGZkSL9LVYD1gKGNIQeNtcOtE354vX7mwsG4d4WdsSwrOuUv7HECxMaCE7zivnXin61u92Ki3UZQEtmxIVxzX08Yc3GLJUblpK7syER8QshZX62X-w0ZVpm5Y3UhRM-axagmrUcctaKZMaM6z71QA_ZqCO4v2_u2Q"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Updated Title\",\n    \"author\": \"Updated Author\",\n    \"description\": \"Updated Description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/100",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/books/100/borrow",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiOTc5NjYyY2M4YjM3OGM2OTI1MWQ0OWEzZGY0Y2VmN2EyYzViYTRmOGE2NDFiOWRlM2I4YTAzZjE4OWJhYzQ3ZDcxMWQxOWQwZTIwNWMiLCJpYXQiOjE3NDE3OTAyMTEuODI5NDE2LCJuYmYiOjE3NDE3OTAyMTEuODI5NDIxLCJleHAiOjE3NzMzMjYyMTEuNjQwNjI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JykYvUoc5hUTIWgHPacYzwaDXm79F0nhtrzla1k1cAmB1HONmBlUfl3s6Zz-SnKxE-d9kk1MqkQ3TrQjuamDy95GEuQ2B3hcq-T2hcdtDIL164ZGnFTTlFsXMrB_ti13TsJgb9nhrlE43-28qNbJENYqX1Y9eeCTOUzGG1b3l80ZWXM0k5RYMxkACz8Yjo-aCASr0I2FJl1oMN6cpvSbRDJYogKU5U1DOP1XwVrf1BQFhcvGrsF6gTJ0gxHcwS6WXLaw7HxtkDqYS3VEXFl2EC7HaBkNF0SP9GUfd-HC2XK98yLITKxnaHFD3BJQsazvJ7w9lCVLl2MTd_aeXCthrzXJboxapC2ndM-rF7VSKvYhRDGyEGNxhXLSPwSvqi4VExs-bjSQbtoZjz9dlZtrHJrBIGv5WistxhwkQ3nQNIYHPkinDqkKyNTVvEAP_bw7Qgrf1JGmW5JqFzPon0VZ3OrEQeFLnUwkuM1pbJTTPGomy3lY_TYS3W1K3NSx15lxhAv3GJ1K_1zcR3QFL3m6SvqmDBe8jOY-h6bh4wOSucfTYVDu7lkwIgjLgbJUHW4_-GUrUhhIjHVEuEF5EevLIixbXZMMrd2uEWpg1zXTz08s9Qt8GZMNt9F5Wu5eYMveHVw5kVdopkL76wA3P1oCOOIN3Zj2EEZz7GV4evUp7Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWRmOGNjNjdmYzJmY2QwZGVjNTg5MGJjMTg0NzdmZWI5MWVkOTMwZGI3YzllMTBjMTJhZjJiODEwZGYyN2I1OTUwOTZiOTZiODFlYTg3ZjUiLCJpYXQiOjE3NDE3NjA3OTUuMjA0NDYxLCJuYmYiOjE3NDE3NjA3OTUuMjA0NDY3LCJleHAiOjE3NzMyOTY3OTUuMDE1MzE5LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.U9M2J0Au6uCVJBMDB1hyr9juxnW9PTsd9LVNehH0luw4TJ-UjQrKW1L1zShOMXp-VtIw_ruv0TgsAQgahzhOKIuQnKf6n0jQg9Tc4UJdefWyTR_Z15Ek0BC2hoZmCuFrHmjNLlr6HMvXD39WLaNS4SzBMzSDdWRcIQfpp1IFjkLy5bPDgOB-Oj2-PhF90rPt3fUfqeyGlw9jyxqP2CdarDijpGF8XCbHdkYMGlzd9zCEpOmZE6BuPUCp6UqXdQYr5L-4diDciSAAw1MCzrvD0NteHC2Y3omMp1781RTbIr6aUaAmidtRcIzqfqGN3NH2tc1j7pSZm7GvUWNsV49T06wJ6mrxgmLe7tBbeyPuV874HeUqqwNcZcdJDv6nBV49E_N0jnET2JgWkeQ20Kf-CoS9vM6RM1IDZEwY8Klklzjp7YTLVL_RlLRmcgRxdzmPhk72XmszfYI730zlsTK9L-8-uZ4441rSqgRiFTr8RaG6xPXno3C0OzEmZrpU3islE2-iKmrsJKiCT698a-J-JhyEAAGcsE91Ckx1DZ6ai38akeHbO3b365SOqZU9_YECXwDVzOJjRRU4yNaKECJSt9fzyzlRYVQKUoxNfa3qLMVMmytTScm023pQdyge4lgipA1BK1EPYP_xd3NJpz1QEWsWa5H1e--UqD4RStc05E8"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/100/borrow",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"100",
+						"borrow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/books/100/return",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWJiOTc5NjYyY2M4YjM3OGM2OTI1MWQ0OWEzZGY0Y2VmN2EyYzViYTRmOGE2NDFiOWRlM2I4YTAzZjE4OWJhYzQ3ZDcxMWQxOWQwZTIwNWMiLCJpYXQiOjE3NDE3OTAyMTEuODI5NDE2LCJuYmYiOjE3NDE3OTAyMTEuODI5NDIxLCJleHAiOjE3NzMzMjYyMTEuNjQwNjI0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JykYvUoc5hUTIWgHPacYzwaDXm79F0nhtrzla1k1cAmB1HONmBlUfl3s6Zz-SnKxE-d9kk1MqkQ3TrQjuamDy95GEuQ2B3hcq-T2hcdtDIL164ZGnFTTlFsXMrB_ti13TsJgb9nhrlE43-28qNbJENYqX1Y9eeCTOUzGG1b3l80ZWXM0k5RYMxkACz8Yjo-aCASr0I2FJl1oMN6cpvSbRDJYogKU5U1DOP1XwVrf1BQFhcvGrsF6gTJ0gxHcwS6WXLaw7HxtkDqYS3VEXFl2EC7HaBkNF0SP9GUfd-HC2XK98yLITKxnaHFD3BJQsazvJ7w9lCVLl2MTd_aeXCthrzXJboxapC2ndM-rF7VSKvYhRDGyEGNxhXLSPwSvqi4VExs-bjSQbtoZjz9dlZtrHJrBIGv5WistxhwkQ3nQNIYHPkinDqkKyNTVvEAP_bw7Qgrf1JGmW5JqFzPon0VZ3OrEQeFLnUwkuM1pbJTTPGomy3lY_TYS3W1K3NSx15lxhAv3GJ1K_1zcR3QFL3m6SvqmDBe8jOY-h6bh4wOSucfTYVDu7lkwIgjLgbJUHW4_-GUrUhhIjHVEuEF5EevLIixbXZMMrd2uEWpg1zXTz08s9Qt8GZMNt9F5Wu5eYMveHVw5kVdopkL76wA3P1oCOOIN3Zj2EEZz7GV4evUp7Wc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWRmOGNjNjdmYzJmY2QwZGVjNTg5MGJjMTg0NzdmZWI5MWVkOTMwZGI3YzllMTBjMTJhZjJiODEwZGYyN2I1OTUwOTZiOTZiODFlYTg3ZjUiLCJpYXQiOjE3NDE3NjA3OTUuMjA0NDYxLCJuYmYiOjE3NDE3NjA3OTUuMjA0NDY3LCJleHAiOjE3NzMyOTY3OTUuMDE1MzE5LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.U9M2J0Au6uCVJBMDB1hyr9juxnW9PTsd9LVNehH0luw4TJ-UjQrKW1L1zShOMXp-VtIw_ruv0TgsAQgahzhOKIuQnKf6n0jQg9Tc4UJdefWyTR_Z15Ek0BC2hoZmCuFrHmjNLlr6HMvXD39WLaNS4SzBMzSDdWRcIQfpp1IFjkLy5bPDgOB-Oj2-PhF90rPt3fUfqeyGlw9jyxqP2CdarDijpGF8XCbHdkYMGlzd9zCEpOmZE6BuPUCp6UqXdQYr5L-4diDciSAAw1MCzrvD0NteHC2Y3omMp1781RTbIr6aUaAmidtRcIzqfqGN3NH2tc1j7pSZm7GvUWNsV49T06wJ6mrxgmLe7tBbeyPuV874HeUqqwNcZcdJDv6nBV49E_N0jnET2JgWkeQ20Kf-CoS9vM6RM1IDZEwY8Klklzjp7YTLVL_RlLRmcgRxdzmPhk72XmszfYI730zlsTK9L-8-uZ4441rSqgRiFTr8RaG6xPXno3C0OzEmZrpU3islE2-iKmrsJKiCT698a-J-JhyEAAGcsE91Ckx1DZ6ai38akeHbO3b365SOqZU9_YECXwDVzOJjRRU4yNaKECJSt9fzyzlRYVQKUoxNfa3qLMVMmytTScm023pQdyge4lgipA1BK1EPYP_xd3NJpz1QEWsWa5H1e--UqD4RStc05E8"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books/100/return",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books",
+						"100",
+						"return"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
