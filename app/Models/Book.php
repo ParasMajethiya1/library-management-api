@@ -30,4 +30,9 @@ class Book extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public function borrowings()
+    {
+        return $this->hasMany(Borrowing::class);
+    }
 }

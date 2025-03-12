@@ -54,4 +54,9 @@ class User extends Authenticatable
             ]);
         });
     }
+
+    public function borrowings()
+    {
+        return $this->hasMany(Borrowing::class);
+    }
 }

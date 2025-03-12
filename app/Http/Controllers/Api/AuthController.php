@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
+use App\Jobs\LoginLogJob;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @OA\Tag(
@@ -98,6 +100,7 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('auth-token')->accessToken;
+        LoginLogJob::dispatch(Auth::id(), $request->ip());
 
         return response()->json([
             'message' => 'Logged in successfully',
