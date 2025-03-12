@@ -10,11 +10,12 @@ use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
 use App\Jobs\LoginLogJob;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\Passport;
 
 /**
- * @OA\Tag(
- *     name="Auth",
- *     description="API Endpoints for User Authentication"
+ * @OA\Info(
+ *     title="Library Management",
+ *     version="1.0.0"
  * )
  */
 class AuthController extends Controller
@@ -74,10 +75,13 @@ class AuthController extends Controller
      *     summary="User login",
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"email", "password"},
-     *             @OA\Property(property="email", type="string", example="johndoe@example.com"),
-     *             @OA\Property(property="password", type="string", format="password", example="password123")
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 required={"email", "password"},
+     *                 @OA\Property(property="email", type="string", example="parasmajethiya2021@gmail.com"),
+     *                 @OA\Property(property="password", type="string", format="password", example="DRftgyhu12#")
+     *             )
      *         )
      *     ),
      *     @OA\Response(response=200, description="Logged in successfully"),
@@ -100,6 +104,7 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('auth-token')->accessToken;
+        Passport::actingAs($user);
         LoginLogJob::dispatch(Auth::id(), $request->ip());
 
         return response()->json([
@@ -108,12 +113,39 @@ class AuthController extends Controller
             'user' => $user,
         ], 200);
     }
-    
+
     /**
-     * Log out the user and revoke the token.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\SecurityScheme(
+     *     securityScheme="bearerAuth",
+     *     type="http",
+     *     scheme="bearer",
+     *     bearerFormat="JWT",
+     *     description="Use a valid JWT token to authenticate."
+     * )
+     */
+
+    /**
+     * @OA\Post(
+     *     path="/api/logout",
+     *     tags={"Auth"},
+     *     summary="Logout the authenticated user",
+     *     description="Revokes the user's access token and logs them out.",
+     *     security={{"bearerAuth":{}}}, 
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successfully logged out",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Logged out successfully")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized - Token required or invalid",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Unauthenticated.")
+     *         )
+     *     )
+     * )
      */
     public function logout(Request $request)
     {

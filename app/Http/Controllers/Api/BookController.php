@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Validator;
 use App\Services\BookCacheService;
 
 /**
- * @OA\Info(
- *      title="Book API",
- *      version="1.0.0",
- *      description="API documentation for managing books"
- * )
- * 
  * @OA\Tag(
  *     name="Books",
  *     description="API Endpoints for Books"

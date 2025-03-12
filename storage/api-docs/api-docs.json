@@ -1,8 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Book API",
-        "description": "API documentation for managing books",
+        "title": "Library Management",
         "version": "1.0.0"
     },
     "paths": {
@@ -71,7 +70,7 @@
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
                                 "required": [
                                     "email",
@@ -80,12 +79,12 @@
                                 "properties": {
                                     "email": {
                                         "type": "string",
-                                        "example": "johndoe@example.com"
+                                        "example": "parasmajethiya2021@gmail.com"
                                     },
                                     "password": {
                                         "type": "string",
                                         "format": "password",
-                                        "example": "password123"
+                                        "example": "DRftgyhu12#"
                                     }
                                 },
                                 "type": "object"
@@ -101,6 +100,55 @@
                         "description": "Invalid credentials"
                     }
                 }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout the authenticated user",
+                "description": "Revokes the user's access token and logs them out.",
+                "operationId": "ad65cbbd4e9f201619eae184a5961a98",
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Logged out successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - Token required or invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/api/books": {
@@ -293,12 +341,19 @@
     },
     "tags": [
         {
-            "name": "Auth",
-            "description": "API Endpoints for User Authentication"
-        },
-        {
             "name": "Books",
             "description": "API Endpoints for Books"
+        },
+        {
+            "name": "Auth",
+            "description": "Auth"
         }
-    ]
+    ],
+    "security": {
+        "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+        }
+    }
 }
